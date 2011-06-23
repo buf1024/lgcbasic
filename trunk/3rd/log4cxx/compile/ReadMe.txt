@@ -1,0 +1,1 @@
+log4cxx\projects\log4cxx.vcproj   ==> log4cxx.vcproj

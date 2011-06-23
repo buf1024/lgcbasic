@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<!--METADATA TYPE="DesignerControl" startspan
+<OBJECT style="TOP: 0px; LEFT: 0px" id=HScript1 classid="clsid:B273EEFC-7A30-4D60-86AF-CA2DE26E966D">
+	<PARAM NAME="Checksum" VALUE="3894462325">
+	<PARAM NAME="Filename" VALUE="D:\WEB\BVCode\BVCode_Local\design\init.txt">
+	<PARAM NAME="Arg1" VALUE="D:\WEB\BVCode\BVCode_Local\data\ZipArchive.ini">
+	<PARAM NAME="Arg2" VALUE="">
+	<PARAM NAME="Arg3" VALUE=""></OBJECT>
+-->
+<meta name="Author" content="Bjarke Viksoe">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="Copyright" content="Copyright © 2001 viksoe.dk, All Rights Reserved.">
+<meta name="Keywords" content="viksoe.dk, CPP, ZIP, compression, extract, decrypt, CZipArchive, CZipFile, ZLIB, uncompress, PKZIP, WINZIP, zip archive classes, source code, atl, wtl, com, c++, cpp, mfc, asp, windows">
+<title>viksoe.dk - ZIP Archive classes</title>
+<link rel="stylesheet" type="text/css" href="ziparchive_files/style.css">
+
+<!--METADATA TYPE="DesignerControl" endspan-->
+</head>
+<body>
+<!--METADATA TYPE="DesignerControl" startspan
+<OBJECT style="WIDTH: 152px; HEIGHT: 26px; TOP: 0px; LEFT: 0px" id=HArguments1 classid="clsid:B273EEFC-7A30-4D60-86AF-CA2DE26E966D">
+	<PARAM NAME="Checksum" VALUE="3558822926">
+	<PARAM NAME="Filename" VALUE="D:\WEB\BVCode\BVCode_Local\design\top.txt"></OBJECT>
+-->
+<p align="center">
+</p><table style="display: block; max-width: 70em; margin: auto;" width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td width="180" background="ziparchive_files/ulc.gif" height="36">&nbsp;</td>
+    <td background="ziparchive_files/ul.gif" height="36">&nbsp;</td>
+    <td width="36" background="ziparchive_files/urc.gif" height="36">&nbsp;</td></tr>
+  <tr>
+    <td valign="top" width="180" background="ziparchive_files/l.gif">
+      <a href="http://www.viksoe.dk/code/index.htm"><img alt="Home" src="ziparchive_files/i_home.gif" width="180" border="0" height="36" hspace="0"></a><br>
+      <a href="http://www.viksoe.dk/code/all_news.htm"><img alt="Recent changes" src="ziparchive_files/i_news.gif" width="180" border="0" height="36" hspace="0"></a><br>
+      <img src="ziparchive_files/l.gif" alt="" width="180" border="0" height="36" hspace="0"><br>
+      <a href="http://www.viksoe.dk/code/all_atl.htm"><img alt="ATL code" src="ziparchive_files/i_atl.gif" width="180" border="0" height="36" hspace="0"></a><br>
+      <a href="http://www.viksoe.dk/code/all_wtl.htm"><img alt="WTL code" src="ziparchive_files/i_wtl.gif" width="180" border="0" height="36" hspace="0"></a><br>
+      <a href="http://www.viksoe.dk/code/all_mfc.htm"><img alt="MFC code" src="ziparchive_files/i_mfc.gif" width="180" border="0" height="36" hspace="0"></a><br>
+      <a href="http://www.viksoe.dk/code/all_cpp.htm"><img alt="C++ code" src="ziparchive_files/i_cpp.gif" width="180" border="0" height="36" hspace="0"></a><br>
+      <a href="http://www.viksoe.dk/code/all_net.htm"><img alt=".Net code" src="ziparchive_files/i_net.gif" width="180" border="0" height="36" hspace="0"></a><br>
+      <a href="http://www.viksoe.dk/code/all_wince.htm"><img alt="PocketPC code" src="ziparchive_files/i_wince.gif" width="180" border="0" height="36" hspace="0"></a><br>
+      <a href="http://www.viksoe.dk/code/all_misc.htm"><img alt="Miscellaneous" src="ziparchive_files/i_misc.gif" width="180" border="0" height="36" hspace="0"></a><br>
+    </td>
+    <td valign="top" align="left">
+      <p align="center"><img src="ziparchive_files/logo.gif" alt="viksoe.dk" width="225" height="45"></p>
+<!--METADATA TYPE="DesignerControl" endspan-->
+<!--METADATA TYPE="DesignerControl" startspan
+<OBJECT style="TOP: 0px; LEFT: 0px" id=HArguments3 classid="clsid:B273EEFC-7A30-4D60-86AF-CA2DE26E966D">
+	<PARAM NAME="Checksum" VALUE="4194044542">
+	<PARAM NAME="Filename" VALUE="D:\WEB\BVCode\BVCode_Local\design\page.asp">
+	<PARAM NAME="Arg1" VALUE="D:\WEB\BVCode\BVCode_Local\data\ZipArchive.ini"></OBJECT>
+-->
+<a name="top"></a>
+<h1>ZIP Archive classes</h1>
+The <b>ZIP Archive</b> classes allow you to examine and extract
+files in a compressed ZIP archive.
+<p>
+The classes can enumerate the compressed files stored inside
+a ZIP file and extract the files one by one. There is nothing
+really magic about this, because it uses the <b>ZLIB</b> library
+maintained by Jean-loup Gailly and Mark Adler.
+</p><p>
+The <b>CZipArchive</b> class gives access to the compressed
+entries through the <code>GetFile()</code> methods. The uncompressed
+data is returned in a <b>CZipFile</b> class that can be used as a
+memory stream.
+<br>
+To enumerate the entries in the ZIP use the <code>FindFirstFile()</code>,
+<code>FindNextFile()</code> and <code>FindClose()</code> methods. They
+operate exactly like the <i>Win32 API FindFile</i> counterparts.
+<br>
+The classes cannot compress data, delete, overwrite or add new entries to the
+ZIP file. It does however support compressed and encrypted ZIP 2.0 files.
+</p><p>
+So, to open and use a ZIP file, use the following syntax:
+</p><pre><code>  CZipArchive zip;
+  zip.Open(_T("test.zip"));
+  ...
+  zip.Close();</code></pre>
+To extract a file from the ZIP archive:
+<pre><code>  CZipFile file;
+  if( zip.GetFile(_T("readme.txt"), &amp;file) == TRUE ) {
+    DWORD dwSize = file.GetSize();
+    LPSTR pStr = (LPSTR) _alloca(dwSize);
+    file.Read(pStr, dwSize, NULL);
+    file.Close();
+  }</code></pre>
+Enumerate the entries in the ZIP like this:
+<pre><code>  ZIP_FIND_DATA fd;
+  HANDLE hFD = zip.FindFirstFile(_T("*.*"), &amp;fd);
+  if( hFD != INVALID_HANDLE_VALUE ) {
+    while( true ) {
+      printf(_T("%s"), fd.cFileName);
+      if( zip.FindNextFile(hFD, &amp;fd) == FALSE ) break;
+    }
+    zip.FindClose(hFD);
+  }</code></pre>
+If you're dealing with an archive containing encrypted files, 
+call the <code>SetPassword</code> method on <code>CZipArchive</code> before 
+you start retrieving files.
+
+
+<h2>Interface</h2>
+<div class="Interface">
+<table>
+<tbody><tr><th>&nbsp;</th><th>Name</th><th>Description</th></tr>
+<tr><td valign="top"><img alt="" src="ziparchive_files/x_method.gif"></td><td valign="top">Open</td><td>Opens a ZIP archive.</td></tr>
+<tr><td valign="top"><img alt="" src="ziparchive_files/x_method.gif"></td><td valign="top">Close</td><td>Closes the archive.</td></tr>
+<tr><td valign="top"><img alt="" src="ziparchive_files/x_method.gif"></td><td valign="top">GetFile</td><td>Extracts a file entry.</td></tr>
+<tr><td valign="top"><img alt="" src="ziparchive_files/x_method.gif"></td><td valign="top">SetPassword</td><td>Set password to use on encrypted files.</td></tr>
+<tr><td valign="top"><img alt="" src="ziparchive_files/x_method.gif"></td><td valign="top">FindFirstFile</td><td>Enumerates files in ZIP.</td></tr>
+<tr><td valign="top"><img alt="" src="ziparchive_files/x_method.gif"></td><td valign="top">FinNextFile</td><td>Gets the next file in FindFirstFile enumeration.</td></tr>
+<tr><td valign="top"><img alt="" src="ziparchive_files/x_method.gif"></td><td valign="top">FindClose</td><td>Closes the find enumeration.</td></tr>
+</tbody></table>
+</div>
+<h2>Notes</h2>
+<div class="listsection">The <b>ZLIB</b> library is free - even for commercial use.
+But please respect the copyright notice in the <b>zlib.h</b>
+file. <b>ZLIB</b> is compatible with both PKZIP and WINZIP.</div>
+
+<h2>Source Code Dependencies</h2>
+<a href="http://msdn.microsoft.com/vstudio/" target="_blank" animsrc="no">Microsoft Visual C++ 6.0</a><br>
+<a href="http://msdn.microsoft.com/library/" target="_blank" animsrc="no">Microsoft ATL Library</a><br>
+<a href="http://www.gzip.org/zlib/" target="_blank" animsrc="no">ZLIB</a><br>
+
+<h2>Useful Links</h2>
+<a href="http://www.gzip.org/zlib/" target="_blank" animsrc="no">The ZLIB home</a><br>
+<a name="download"></a><h2>Download Files</h2>
+<table><tbody><tr><td><img src="ziparchive_files/download.gif" alt="Download" border="0"></td><td><a href="http://www.viksoe.dk/code/downloads/unziparchive_src.zip">Source Code <small>(6 Kb)</small></a><br>
+<a href="http://www.viksoe.dk/code/static_downloads/zlib.zip">ZLIB files <small>(100 Kb)</small></a><br>
+</td></tr></tbody></table><br><br><small><font color="darkgray">Written by Bjarke Viksoe.</font></small><br><small><font color="darkgray">Article submitted 6/7/2001.</font></small><br>
+<br>
+
+<a href="#top"><small><font color="darkgray">To the top</font></small></a>
+
+<p>&nbsp;</p>
+
+<!--METADATA TYPE="DesignerControl" endspan-->
+<!--METADATA TYPE="DesignerControl" startspan
+<OBJECT id=HArguments2 style="LEFT: 0px; TOP: 0px" classid="clsid:B273EEFC-7A30-4D60-86AF-CA2DE26E966D">
+	<PARAM NAME="Checksum" VALUE="791842800">
+	<PARAM NAME="Filename" VALUE="D:\WEB\BVCode\BVCode_Local\design\middle.txt"></OBJECT>
+-->
+      <p class="news">&nbsp;</p>
+    </td>
+    <td width="36" background="ziparchive_files/rl.gif"><img src="ziparchive_files/rl.gif" alt="" width="36" height="1"></td></tr>
+  <tr align="left">
+    <td width="180" background="ziparchive_files/llc.gif" height="36">&nbsp;</td>
+    <td background="ziparchive_files/bl.gif" height="36">&nbsp;</td>
+    <td width="36" background="ziparchive_files/lrc.gif" height="36">&nbsp;</td></tr>
+
+<!--METADATA TYPE="DesignerControl" endspan-->
+<!--METADATA TYPE="DesignerControl" startspan
+<OBJECT style="TOP: 0px; LEFT: 0px" id=HArguments4 classid="clsid:B273EEFC-7A30-4D60-86AF-CA2DE26E966D">
+	<PARAM NAME="Checksum" VALUE="1965881265">
+	<PARAM NAME="Filename" VALUE="D:\WEB\BVCode\BVCode_Local\design\bottom.txt"></OBJECT>
+-->
+</tbody></table>
+<p></p>
+
+<!--METADATA TYPE="DesignerControl" endspan-->
+<!--METADATA TYPE="DesignerControl" startspan
+<OBJECT id=HTemplate1 style="LEFT: 0px; TOP: 0px" classid="clsid:C706EBC4-3C4E-11D4-814D-00C04F0F05BA">
+	<PARAM NAME="Filename" VALUE="D:\WEB\BVCode\BVCode_Local\design\counter.txt"></OBJECT>
+-->
+<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+<script type="text/javascript" language="JavaScript">var
+site="sm9viksoe"</script>
+<a id="idSiteMeterHREF" href="http://www.sitemeter.com/stats.asp?site=sm9viksoe" target="_top"><img src="ziparchive_files/meter.gif" alt="Site Meter" border="0"></a><iframe src="ziparchive_files/a.htm" width="0" frameborder="0" height="0"></iframe><script type="text/javascript" language="JavaScript1.2" src="ziparchive_files/counter.js">
+</script>
+<noscript>
+<a href="http://sm9.sitemeter.com/stats.asp?site=sm9viksoe" target="_top">
+<img src="http://sm9.sitemeter.com/meter.asp?site=sm9viksoe" alt="Site Meter"
+border=0></a>
+</noscript>
+<!-- Copyright (c)2000 Site Meter -->
+<!--WEBBOT bot="HTMLMarkup" Endspan -->
+
+<!--METADATA TYPE="DesignerControl" endspan-->
+
+
+</body></html>
