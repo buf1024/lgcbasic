@@ -1,0 +1,1 @@
+Some frequently use code
